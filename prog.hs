@@ -20,8 +20,8 @@ getInts = (map (fst . fromJust . BS8.readInt) . BS8.words) `fmap` BS.getLine :: 
 findStart:: [[Int]] -> (Int, Int)
 findStart a = head [(i, j) | i <- [0..length a - 1], j <- [0..length (a !! i) - 1], (a !! i) !! j == 1]
 
-findGarbages:: [[Int]] -> [(Int, Int)]
-findGarbages a = [(i, j) | i <- [0..length a - 1], j <- [0..length (a !! i) - 1], (a !! i) !! j == 2]
+findObjects:: [[Int]] -> [(Int, Int)]
+findObjects a = [(i, j) | i <- [0..length a - 1], j <- [0..length (a !! i) - 1], (a !! i) !! j == 2]
 
 manhattanDistance:: (Int, Int) -> (Int, Int) -> Int
 manhattanDistance (x1, y1) (x2, y2) = abs (x1 - x2) + abs (y1 - y2)
@@ -74,14 +74,26 @@ solve g garbagesWithStart = do
     xVal <- readIORef x
     reconstructPath finalMask xVal
     finalPath <- readIORef path
-    putStrLn $ "Path: " ++ unwords (map show (reverse finalPath))
+
+    let finalPathRev = reverse finalPath
+
+    putStrLn $ "Path: " ++ unwords [show (garbagesWithStart !! i) | i <- finalPath] ++ " (0,0)"
 
 main = do
+    putStrLn "======================"
+    putStrLn "Escriba la descripción del mapa:"
+    putStrLn "  Dimensión del mapa"
+    putStrLn "  0 - Casilla vacía"
+    putStrLn "  1 - Casilla con el robot"
+    putStrLn "  2 - Casilla con un objeto para recoger"
+    putStrLn "Objetivo: Imprimir el mejor camino desde la posición del robot para recoger todos los objetos y volver a la posición inicial"
+    putStrLn "======================"
+    
     n <- getInt
     a <- replicateM n getInts
     
     let start = findStart a
-        garbages = findGarbages a
+        garbages = findObjects a
         garbagesWithStart = (start : garbages)
         g = length garbagesWithStart
     
