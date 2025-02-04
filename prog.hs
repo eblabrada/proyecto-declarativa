@@ -81,6 +81,15 @@ solve g garbagesWithStart = do
     return (best, finalPath)
 
 main = do
+    -- putStrLn "======================"
+    -- putStrLn "Escriba la descripción del mapa:"
+    -- putStrLn "  Dimensión del mapa"
+    -- putStrLn "  0 - Casilla vacía"
+    -- putStrLn "  1 - Casilla con el robot"
+    -- putStrLn "  2 - Casilla con un objeto para recoger"
+    -- putStrLn "Objetivo: Imprimir el mejor camino desde la posición del robot para recoger todos los objetos y volver a la posición inicial"
+    -- putStrLn "======================"
+    
     contents <- readFile "map.txt"
     let a = map (map read . words) (lines contents) :: [[Int]]
         n = length a
