@@ -3,7 +3,9 @@ from tkinter import messagebox
 import random
 import os
 
-FIELD_DIM = 25
+FIELD_DIM = 30
+MIN_GARBAGES = 9
+MAX_GARBAGES = 18
 BLOCK_SIZE = 25
 
 class RobotCollector:
@@ -63,7 +65,7 @@ class RobotCollector:
             self.field[self.sx][self.sy] = 'house'
 
     def garbage_random_position(self):
-        for _ in range(random.randint(1, 15)):
+        for _ in range(random.randint(MIN_GARBAGES, MAX_GARBAGES)):
             while True:
                 r = random.randint(0, FIELD_DIM-1)
                 c = random.randint(0, FIELD_DIM-1)
