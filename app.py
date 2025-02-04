@@ -130,6 +130,8 @@ class RobotCollector:
         os.remove("map.txt")
         os.remove("path.txt")
         os.remove("prog")
+        os.remove("prog.hi")
+        os.remove("prog.o")
 
 if __name__ == "__main__":
     RobotCollector()
