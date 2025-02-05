@@ -61,7 +61,7 @@ solve g garbagesWithStart = do
       writeIORef x i
 
   best <- readIORef bestCost
-  -- putStrLn $ "Best Cost: " ++ show best
+  putStrLn $ "Best Cost: " ++ show best
 
   path <- newIORef []
   let reconstructPath mask x = do
