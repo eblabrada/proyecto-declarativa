@@ -3,8 +3,8 @@ from tkinter import messagebox
 import random
 import os
 
-FIELD_DIM = 30
-MIN_GARBAGES = 9
+FIELD_DIM = 20
+MIN_GARBAGES = 1
 MAX_GARBAGES = 18
 BLOCK_SIZE = 25
 
