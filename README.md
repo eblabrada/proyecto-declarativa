@@ -1,5 +1,8 @@
 # Robot Collector Path
 
+Eduardo Brito Labrada (C-311)
+Ernesto Abreu Peraza (C-312)
+
 ## Objective
 
 The objective of this project is to create a robot that collects garbage bags appearing on a map. The robot starts at a specific position and must collect all the garbage bags and return to its starting position, following the shortest path possible. 
